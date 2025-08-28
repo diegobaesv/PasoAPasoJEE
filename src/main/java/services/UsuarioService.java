@@ -21,7 +21,7 @@ public class UsuarioService {
 		throw new Exception("Usuario ya existe");
 	}
 	
-	public List<Usuario> listarUsuarios() {
+	public List<Usuario> listarUsuarios() throws Exception {
 		return usuarioRepository.listarUsuarios();
 	}
 	

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import entities.Usuario;
 import services.UsuarioService;
+import shared.BaseResponse;
 
 @WebServlet("/usuarios")
 public class UsuarioServlet extends HttpServlet {
@@ -23,8 +24,13 @@ public class UsuarioServlet extends HttpServlet {
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Usuario> usuarios = usuarioService.listarUsuarios();
-    	response.getWriter().append(new Gson().toJson(usuarios));
+		response.setContentType("application/json;charset=UTF-8");
+    	try {
+			List<Usuario> usuarios = usuarioService.listarUsuarios();
+	    	response.getWriter().write(new Gson().toJson(BaseResponse.success(usuarios)));
+		} catch(Exception e) {
+			response.getWriter().write(new Gson().toJson(BaseResponse.error(e.getMessage())));
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
