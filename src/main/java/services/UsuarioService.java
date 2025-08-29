@@ -25,7 +25,7 @@ public class UsuarioService {
 		return usuarioRepository.listarUsuarios();
 	}
 	
-	public Usuario obtenerUsuario(Integer idUsuario) {
+	public Usuario obtenerUsuario(Integer idUsuario) throws Exception {
 		return usuarioRepository.obtenerUsuario(idUsuario);
 	}
 		
