@@ -24,6 +24,8 @@ public class UsuarioServlet extends HttpServlet {
         usuarioService = new UsuarioService();
     }
     
+    // hola
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
     	try {
